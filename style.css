@@ -1,0 +1,52 @@
+/* ----------------- General CSS ----------------- */
+body {
+    background-image: url("assets/images/jan-gottweiss-1576476-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.fa {
+    color: #fff;
+    font-size: 22pt;
+}
+
+
+/* ----------------- Welcome Page CSS ----------------- */
+#welcome-page-padding {
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    padding: 50px;
+    height: 1000px;
+}
+
+form {
+    background-color: #fff;
+    padding: 40px;
+}
+
+#welcome {
+    margin-top: 200px;
+}
+
+
+/* ----------------- Trail Home Page CSS ----------------- */
+#navbarToggleExternalContent {
+    margin-top: 50px;
+}
+
+#search-form {
+    margin-top: 200px;
+}
+
+#page-content {
+    margin-top: 100px;
+    padding-bottom: 100px;
+}
+
+.trail-difficulty {
+    width: 20px;
+}
