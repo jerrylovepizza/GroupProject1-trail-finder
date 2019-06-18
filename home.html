@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trail Home</title>
+
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Moment CDN -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase Connection -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+    <script src="logic.js"></script>
+</head>
+
+<body>
+    <!-- Sticky Navbar -->
+    <div class="pos-f-t">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <button class="navbar-toggler my-2 my-lg-0" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-sliders"></i>
+            </button>
+
+            <button class="navbar-toggler" type="button">
+                <i id="profile-edit" class="fa fa-user-circle"></i>
+            </button>
+        </nav>
+
+        <div class="collapse fixed-top" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h4 class="text-white">Customize your Trail Display:</h4>
+                <div class="form-check form-check-inline text-white">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">conditions</label>
+                </div>
+
+                <div class="form-check form-check-inline text-white">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">recommended</label>
+                </div>
+
+                <div class="form-check form-check-inline text-white">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <label class="form-check-label" for="inlineCheckbox3">not recommended</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class='container-fluid mt-5'>
+
+        <!-- Trail Search Bar -->
+        <div id="search-form" class="row">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8">
+                <div class="jumbotron jumbotron-fluid mb-0 mt-5 bg-dark">
+                    <div class="container">
+                        <h1 class="display-4 text-bold text-white text-center">Find Your Trail:</h1>
+                    </div>
+                </div>
+
+                <form class="form-inline mb-5 mt-0">
+                    <label class="sr-only" for="inlineFormInputName2">Name</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                        placeholder="Jane Doe">
+
+                    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                            placeholder="Username">
+                    </div>
+
+                    <div class="form-check mb-2 mr-sm-2">
+                        <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                        <label class="form-check-label" for="inlineFormCheck">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </form>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+
+        <div id="page-content" class="row bg-white">
+            <!-- Left Sidebar -->
+            <div id="left-sidebar" class="col-md-2" style="height: 100%;"></div>
+
+            <!-- Main Content Section -->
+            <div id="main-content" class="col-md-8 pt-5" style="height: 100%;">
+
+                <div class="row px-2">
+
+                    <div class="col-md-12 col-lg-4">
+                        <div class="card mt-3">
+                            <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to
+                                    additional content.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-4">
+                        <div class="card mt-3">
+                            <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to
+                                    additional content.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-4">
+                        <div class="card mt-3">
+                            <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Shoshone Lake & Geyser Basin</h5>
+                                <p class="card-text">This route begins on DeLacy Creek Trail at a trailhead located on the Old Faithful to West Thumb road where it crosses DeLacy Creek. </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Trail Difficulty: <a href="#" class="btn bg-light"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy"> Easy</a></li>
+                                    <li class="list-group-item">Trail Radius: <a href="#" class="btn bg-light">10-15 miles</a></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer bg-success">
+                                <small class="text-white">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div id="right-sidebar" class="col-md-2" style="height: 100%;"></div>
+
+        </div>
+
+        <script>
+
+        </script>
+</body>
+
+</html>
