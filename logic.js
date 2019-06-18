@@ -11,7 +11,6 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   var i = 0
-  //click function to store info:
   
   //user location
   var userZipcode = "80003"
@@ -38,25 +37,25 @@ url: queryurlGetTrails,
 method: "GET",
 })
 
-.then(function(response){
+.then(function(trailResponse){
+  console.log(trailResponse)
 
 // Recommeded trail information
-var TrailName = response.trails[i].name //And probably the first 5 mountians for all but im using index 0 as example.
-var TrailStars = response.trails[i].stars
-var TrailLocation = response.trails[i].location
-var TrailConditionStatus = response.trails[i].conditionstatus 
-console.log(response)
+var TrailName = trailResponse.trails[i].name //And probably the first 5 mountians for all but im using index 0 as example.
+var TrailStars = trailResponse.trails[i].stars
+var TrailLocation = trailResponse.trails[i].location
+var TrailConditionStatus = trailResponse.trails[i].conditionStatus 
 
 // Trail difficulty and details after search or click details
 // TrailName 
 // TrailLocation
 // TrailConditionStatus
 // conditionColor
-var TrailDifficulty = response.trails[i].difficulty
-var TrailAscent = response.trails[i].ascent
-var TrailImg = response.trails[i].imgSmall
-var TrailSummary = response.trails[i].summary
-TrailID = response.trails[i].id // Display ID for user search of trails
+var TrailDifficulty = trailResponse.trails[i].difficulty
+var TrailAscent = trailResponse.trails[i].ascent
+var TrailImg = trailResponse.trails[i].imgSmall
+var TrailSummary = trailResponse.trails[i].summary
+TrailID = trailResponse.trails[i].id // Display ID for user search of trails
 
 //  Trail full information after picking 
 // TrailName 
@@ -65,59 +64,64 @@ TrailID = response.trails[i].id // Display ID for user search of trails
 // TrailAscent
 // TrailImg
 // TrailSummary
-})
-
-$.ajax({
- url: queryurlGetConditions,
- method: "GET"
-})
-
-.then(function(response){
-    
-    var conditionStatus = response[i].conditionStatus
-     conditionColor = response[i].conditionColor
-     var conditionDetails = response[i].conditionDetails
-     
-
 }).then(function(){
+
+  
   $.ajax({
-    url: queryurlWeather,
+    url: queryurlGetConditions,
     method: "GET"
   })
-  .then(function(response){
-    
-    var WeatherDescription = response.weather[0].description 
-    var WeatherClouds = response.clouds.all
-    var WeatherTemp = response.main.temp 
-    var WeatherTempMax = response.main.temp_max
-    var WeatherTempMin = response.main.temp_min
   
-  }).then(function(){
-
+  .then(function(conditionResponse){
     
+    var conditionStatus = conditionResponse[i].conditionStatus
+    conditionColor = conditionResponse[i].conditionColor
+    var conditionDetails = conditionResponse[i].conditionDetails
+    
+    
+  }).then(function(){
     $.ajax({
-      url: queryurlForcast,
+      url: queryurlWeather,
       method: "GET"
     })
-    .then(function(response){
+    .then(function(weatherResponse){
       
-      var locationLat = response.location.lat
-      var locationLon = response.location.lon
-      locationCode = response.forecast.forecastday[0].day.condition.code
+      var WeatherDescription = weatherResponse.weather[0].description 
+      var WeatherClouds = weatherResponse.clouds.all
+      var WeatherTemp = weatherResponse.main.temp 
+      var WeatherTempMax = weatherResponse.main.temp_max
+      var WeatherTempMin = weatherResponse.main.temp_min
       
     }).then(function(){
       
-     
-      if(conditionColor === "Green" && (locationCode===1000 || locationCode===1003)){
-        recommend = true;
+      
+      $.ajax({
+        url: queryurlForcast,
+        method: "GET"
+      })
+      .then(function(forcastResponse){
         
-      }
+        var locationLat = forcastResponse.location.lat
+        var locationLon = forcastResponse.location.lon
+        locationCode = forcastResponse.forecast.forecastday[0].day.condition.code
+        console.log(forcastResponse)
+        
+      }).then(function(){
+        // for(i=0; i<trails.length; i++){
+          // }
+          
+          console.log(conditionColor)
+          if(conditionColor === "Green" && (locationCode===1000 || locationCode===1003)){
+            recommend = true;
+            
+          }
+        })
     })
-    })
-  
+    
+  })
 })
-
-$("#submit-Button").on("click", function(childSnapshot){
+  
+  $("#submit-Button").on("click", function(childSnapshot){
 
   // profile data entry :
   // name:
