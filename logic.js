@@ -12,18 +12,38 @@ var firebaseConfig = {
 
   var i = 0
   
-  //user location
+  // default user location
   var userZipcode = "80003"
   var userLocation = "Denver"
-  // radius 
+  // default radius 
   var userRadius = "10"
-  // forecast code
-  var locationCode;
+  
   // defined later
+  // do we reccommend this trail today true = yes false = no
   var recommend = false;
+  // do we display the hikes we don't recommend true = yes false = no
   var displayNonRec = false;
-  var TrailID;
+  // trail info to display
+  var TrailImg;
+  var TrailName;
+  var TrailStars;
+  var TrailLocation;
   var conditionColor;
+  var TrailConditionStatus;
+  var TrailDifficulty;
+  var TrailSummary;
+  var TrailAscent;
+  var TrailID;
+  // or 
+  var conditionStatus;
+  var conditionDetails;
+  // weather info
+  var locationLat;
+  var locationLon;
+  var locationCode;
+
+  //  the trail array we are going to compare
+  var trailList = [""];
   
 
 var queryurlGetTrails = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=" + userRadius +"&maxResults=20&sort=distance&sort=quality&key=200490962-902084607f37c24a16f0e3f869dae93f"
@@ -38,34 +58,20 @@ method: "GET",
 })
 
 .then(function(trailResponse){
-  console.log(trailResponse)
+  // Recommeded trail information
+  TrailImg = trailResponse.trails[i].imgSmall
+  TrailName = trailResponse.trails[i].name //And probably the first 5 mountians for all but im using index 0 as example.
+  TrailStars = trailResponse.trails[i].stars
+  TrailLocation = trailResponse.trails[i].location
+  
+  TrailConditionStatus = trailResponse.trails[i].conditionStatus 
+  TrailDifficulty = trailResponse.trails[i].difficulty
+  TrailSummary = trailResponse.trails[i].summary
+  TrailAscent = trailResponse.trails[i].ascent
+  TrailID = trailResponse.trails[i].id // Display ID for user search of trails
+  trailList = trailResponse.trails;//storing the trail array
 
-// Recommeded trail information
-var TrailName = trailResponse.trails[i].name //And probably the first 5 mountians for all but im using index 0 as example.
-var TrailStars = trailResponse.trails[i].stars
-var TrailLocation = trailResponse.trails[i].location
-var TrailConditionStatus = trailResponse.trails[i].conditionStatus 
-
-// Trail difficulty and details after search or click details
-// TrailName 
-// TrailLocation
-// TrailConditionStatus
-// conditionColor
-var TrailDifficulty = trailResponse.trails[i].difficulty
-var TrailAscent = trailResponse.trails[i].ascent
-var TrailImg = trailResponse.trails[i].imgSmall
-var TrailSummary = trailResponse.trails[i].summary
-TrailID = trailResponse.trails[i].id // Display ID for user search of trails
-
-//  Trail full information after picking 
-// TrailName 
-// TrailLocation
-// TrailDifficulty
-// TrailAscent
-// TrailImg
-// TrailSummary
 }).then(function(){
-
   
   $.ajax({
     url: queryurlGetConditions,
@@ -74,9 +80,9 @@ TrailID = trailResponse.trails[i].id // Display ID for user search of trails
   
   .then(function(conditionResponse){
     
-    var conditionStatus = conditionResponse[i].conditionStatus
+    conditionStatus = conditionResponse[i].conditionStatus
     conditionColor = conditionResponse[i].conditionColor
-    var conditionDetails = conditionResponse[i].conditionDetails
+    conditionDetails = conditionResponse[i].conditionDetails
     
     
   }).then(function(){
@@ -101,14 +107,17 @@ TrailID = trailResponse.trails[i].id // Display ID for user search of trails
       })
       .then(function(forcastResponse){
         
-        var locationLat = forcastResponse.location.lat
-        var locationLon = forcastResponse.location.lon
+        locationLat = forcastResponse.location.lat
+        locationLon = forcastResponse.location.lon
         locationCode = forcastResponse.forecast.forecastday[0].day.condition.code
         console.log(forcastResponse)
         
       }).then(function(){
-        // for(i=0; i<trails.length; i++){
-          // }
+        for(i=0; i<trailList.length; i++){
+          console.log(trailList[i].name)
+            
+          
+            }
           
           console.log(conditionColor)
           if(conditionColor === "Green" && (locationCode===1000 || locationCode===1003)){
@@ -116,10 +125,11 @@ TrailID = trailResponse.trails[i].id // Display ID for user search of trails
             
           }
         })
+      })
+      
     })
     
   })
-})
   
   $("#submit-Button").on("click", function(childSnapshot){
 
