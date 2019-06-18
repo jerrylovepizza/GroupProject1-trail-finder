@@ -81,8 +81,7 @@
                         <label for="location-radius">Trail Radius</label>
                         <select id="inputState" class="form-control">
                             <option selected>Choose...</option>
-                            <option>0-1 miles</option>
-                            <option>1-5 miles</option>
+                            <option>0-5 miles</option>
                             <option>5-10 miles</option>
                             <option>10-15 miles</option>
                             <option>15-20 miles</option>
@@ -94,22 +93,19 @@
                         <label for="trail-difficulty">Trail Difficulty Level</label>
                         <select id="trail-difficulty" class="form-control">
                             <option selected>Choose...</option>
-                            <option>Easy</option>
-                            <option>Normal</option>
-                            <option>Hard</option>
+                            <option style="background-image: url('assets/images/easy-green.png'); width: 20px;"> Easy (green)
+                                <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy"> -->
+                            </option>
+                            <option>Intermediate (blue)
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy">
+                            </option>
+                            <option>Advanced (black)
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy">
+                            </option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="dogs">Binging any dogs?</label>
-                        <select id="dogs" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <a href="home.html" id="submit" class="btn btn-primary btn-xl text-white mt-3">Submit</a>
                 </form>
             </div>
 

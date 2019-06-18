@@ -34,12 +34,21 @@ form {
 
 
 /* ----------------- Trail Home Page CSS ----------------- */
+
+/* Featured Image CSS */
+#featured-image {
+    background-image: url("assets/images/kaitlin-muro-438763-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 #navbarToggleExternalContent {
     margin-top: 50px;
 }
 
 #search-form {
-    margin-top: 200px;
+    padding-top: 200px;
 }
 
 #page-content {
@@ -47,6 +56,36 @@ form {
     padding-bottom: 100px;
 }
 
+/* Card CSS */
+.card:hover {
+    cursor: pointer;
+}
+
+.card-select {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 15px;
+    height: 50px;
+    width: 50px;
+}
+
+.icon-select {
+    color: black;
+    font-size: 30pt;
+    margin-top: 10px;
+}
+
+.icon-select:hover {
+    color: yellow;
+}
+
 .trail-difficulty {
     width: 20px;
+}
+
+/* Modal CSS */
+.modal h5 {
+    margin-left: 50px;
 }
