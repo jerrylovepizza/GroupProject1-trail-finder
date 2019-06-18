@@ -47,6 +47,31 @@ form {
     padding-bottom: 100px;
 }
 
+/* Card CSS */
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-select {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.icon-select {
+    color: black;
+    font-size: 30pt;
+    margin-top: 10px;
+}
+
+.icon-select:hover {
+    color: yellow;
+}
+
 .trail-difficulty {
     width: 20px;
 }

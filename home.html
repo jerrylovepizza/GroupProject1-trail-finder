@@ -179,6 +179,7 @@
                             <div class="card-footer bg-success">
                                 <small class="text-white">Last updated 3 mins ago</small>
                             </div>
+                            <div class="card-select"><i class="icon-select fa fa-star"></i></div>
                         </div>
                     </div>
                     
@@ -190,9 +191,26 @@
 
         </div>
 
-        <script>
+<script>
+    var isFavorited = false;
+    
+    $(".card-select").on("click", function() {
+        
+        if (isFavorited === false) {
+            isFavorited = true;
+            
+            $(".icon-select").css("color", "yellow");
+            
+        } else {
+            isFavorited = false;
+            
+            $(".icon-select").css("color", "black");
+        }
+        
 
-        </script>
+    });
+
+</script>
 </body>
 
 </html>
