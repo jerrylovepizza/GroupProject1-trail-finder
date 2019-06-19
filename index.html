@@ -47,10 +47,8 @@
                 <div class="col-lg-3 d-none d-lg-block"></div>
             </div>
         </div>
-
-        <div id="form-page" class="row mt-5">
         
-        <div id="form-page" class="row">
+        <div id="form-page" class="row mt-5">
             <div id="signup-form" class="col-md-12 col-lg-6">
                 <form class="rounded" id="form">
                     <h1 class="text-uppercase text-bold">Sign Up Here!</h1>
@@ -119,22 +117,18 @@
                         </select>
                     </div>
                     <hr>
-                    <a href="home.html" id="submit" class="btn btn-primary btn-xl text-white">Submit</a>
-                    <a href="home.html" id="submit-button" class="btn btn-primary btn-xl text-white mt-3">Submit</a>
+                    <a href="home.html" id="submit-button" class="btn btn-primary btn-xl text-white">Submit</a>
                 </form>
             </div>
             
             <div class="d-none d-lg-block col-lg-6"></div>
         </div>
-        
-    </div>
     
     <script>
         var loginPage = $("#login-page");
         var formPage = $("#form-page");
 
         loginPage.fadeIn();
-        welcomePage.fadeIn();
         formPage.hide();
         
         $("#sign-up").on("click", function () {
