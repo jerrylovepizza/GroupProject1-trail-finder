@@ -51,9 +51,11 @@
                     <i class="fa fa-sliders"></i>
                 </button>
 
+                <a href="profile.html">
                 <button class="navbar-toggler" type="button">
                     <i id="profile-edit" class="fa fa-user-circle"></i>
                 </button>
+            </a>
             </nav>
 
             <div class="collapse fixed-top" id="navbarToggleExternalContent">
@@ -91,7 +93,7 @@
                 <div class="col-md-2"></div>
 
                 <div class="col-md-8">
-                    <div class="jumbotron jumbotron-fluid mb-0 mt-5 bg-dark">
+                    <div class="jumbotron jumbotron-fluid mb-0 mt-5" style="background-color: rgba(0, 0, 0, 0.5);">
                         <div class="container">
                             <h1 class="display-4 text-bold text-white text-center">Find Your Trail:</h1>
                         </div>
@@ -123,15 +125,15 @@
 
             <div id="page-content" class="row bg-white">
                 <!-- Left Sidebar -->
-                <div id="left-sidebar" class="col-md-2 border" style="height: 1000px;"></div>
+                <div id="left-sidebar" class="col-md-12 col-lg-2 border-right bg-light"></div>
 
                 <!-- Main Content Section -->
-                <div id="main-content" class="col-md-8 pt-5" style="height: 100%;">
+                <div id="main-content" class="col-md-12 col-lg-8  pt-5" style="height: 100%;">
 
                     <div class="row px-2">
 
                         <!-- Card 1 -->
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                                 <div class="card mt-3">
                                     <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="..."
                                         data-toggle="modal" data-target="#exampleModal">
@@ -222,7 +224,7 @@
                             </div>
 
                         <!-- Card 2 -->
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                                 <div class="card mt-3">
                                     <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="..."
                                         data-toggle="modal" data-target="#exampleModal">
@@ -313,7 +315,7 @@
                             </div>
 
                         <!-- Card 3 -->
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                             <div class="card mt-3">
                                 <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="..."
                                     data-toggle="modal" data-target="#exampleModal">
@@ -407,7 +409,63 @@
                 </div>
 
                 <!-- Right Sidebar -->
-                <div id="right-sidebar" class="col-md-2 border-left" style="height: 1000px;"></div>
+                <div id="right-sidebar" class="col-md-12 col-lg-2 border-left bg-light p-2">
+                    <a href="#collapseExample" class="btn btn-secondary btn-xl btn-block py-3 mb-2 mr-sm-2 text-white"
+                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+                        View Saved Trails
+                    </a>
+                    <div class="collapse" id="collapseExample">
+
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <h5 class="card-title bg-dark text-white p-2 m-0 w-100"><small>Shoshone Lake & Geyser Basin</small></h5>
+                                <div class="col-md-3">
+                                    <i class="smallicon-select fa fa-star"></i>
+                                </div>
+                                <div class="col-md-9">
+                                    <img src="assets/images/jan-gottweiss-1576476-unsplash.jpg" class="card-img h-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <h5 class="card-title bg-dark text-white p-2 m-0 w-100"><small>Shoshone Lake & Geyser Basin</small></h5>
+                                <div class="col-md-3">
+                                    <i class="smallicon-select fa fa-star"></i>
+                                </div>
+                                <div class="col-md-9">
+                                    <img src="assets/images/jan-gottweiss-1576476-unsplash.jpg" class="card-img h-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <h5 class="card-title bg-dark text-white p-2 m-0 w-100"><small>Shoshone Lake & Geyser Basin</small></h5>
+                                <div class="col-md-3">
+                                    <i class="smallicon-select fa fa-star"></i>
+                                </div>
+                                <div class="col-md-9">
+                                    <img src="assets/images/jan-gottweiss-1576476-unsplash.jpg" class="card-img h-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <h5 class="card-title bg-dark text-white p-2 m-0 w-100"><small>Shoshone Lake & Geyser Basin</small></h5>
+                                <div class="col-md-3">
+                                    <i class="smallicon-select fa fa-star"></i>
+                                </div>
+                                <div class="col-md-9">
+                                    <img src="assets/images/jan-gottweiss-1576476-unsplash.jpg" class="card-img h-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
 

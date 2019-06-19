@@ -26,21 +26,29 @@
 </head>
 
 <body>
-    <div id="welcome-page-padding" class='container-fluid'>
+    <div id="login-page-padding" class='container-fluid'>
 
-        <div id="welcome-page">
+        <div id="login-page">
             <div class="row">
-                <div class="col-md-3 d-none d-md-block"></div>
-                <div class="col-md-6">
-                    <div id="welcome" class="jumbotron bg-white text-center rounded">
-                        <h1 class="display-4 text-uppercase text-bold">Welcome, Everyone!</h1>
+                <div class="col-lg-3 d-none d-lg-block"></div>
+                <div class="col-sm-12 col-lg-6">
+                    <div id="login-form" class="jumbotron bg-white text-center rounded">
+                        <h1 class="text-uppercase text-bold">Welcome!</h1>
+                        <p>Find a hiking trail nearby by clicking the button below.</p>
                         <hr class="my-4">
-                        <a id="sign-up" class="btn btn-primary btn-xl text-white">Sign Up Now!</a>
+                        <form class="form mt-0">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="username" placeholder="Username">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="password" placeholder="Password">
+                            <a href="#" id="login" class="btn btn-primary btn-xl mb-2 mr-2 mr-sm-2 text-white">Login</a>
+                            <a href="#" id="sign-up" class="btn btn-primary btn-xl mb-2 mr-2 mr-sm-2 text-white">Sign Up</a>
+                        </form>
                     </div>
                 </div>
-                <div class="col-md-3 d-none d-md-block"></div>
+                <div class="col-lg-3 d-none d-lg-block"></div>
             </div>
         </div>
+
+        <div id="form-page" class="row mt-5">
         
         <div id="form-page" class="row">
             <div id="signup-form" class="col-md-12 col-lg-6">
@@ -110,7 +118,8 @@
                             </option>
                         </select>
                     </div>
-                    
+                    <hr>
+                    <a href="home.html" id="submit" class="btn btn-primary btn-xl text-white">Submit</a>
                     <a href="home.html" id="submit-button" class="btn btn-primary btn-xl text-white mt-3">Submit</a>
                 </form>
             </div>
@@ -121,19 +130,21 @@
     </div>
     
     <script>
-        var welcomePage = $("#welcome-page");
+        var loginPage = $("#login-page");
         var formPage = $("#form-page");
-        
+
+        loginPage.fadeIn();
         welcomePage.fadeIn();
         formPage.hide();
         
         $("#sign-up").on("click", function () {
-            welcomePage.hide();
+            loginPage.hide();
             formPage.fadeIn();
         });
         
-        </script>
-<script src="logic.js"></script>
+    </script>
+
+  <script src="logic.js"></script>
 </body>
 
 </html>

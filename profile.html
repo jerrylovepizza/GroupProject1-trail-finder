@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trail Sign Up</title>
+
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Moment CDN -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase Connection -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+    <script src="logic.js"></script>
+
+</head>
+
+<body>
+    <div id="profile-page-background" class='container-fluid'>
+
+        <div id="profile-page" class="row mt-5">
+            <div id="profile" class="col-md-12 col-lg-6">
+                <form class="rounded">
+                    <h1 class="text-uppercase text-bold">Your Information</h1>
+                    <hr class="my-4">
+
+                        <p><strong>Name:</strong></p>
+                        <p id="profile-name">Jane Doe</p>
+
+                        <p><strong>Your Birthday:</strong></p>
+                        <p id="profile-birthday">01/01/2019</p>
+
+                        <p><strong>Your Email (username):</strong></p>
+                        <p id="profile-username">email@email.com</p>
+
+                        <p><strong>Password:</strong></p>
+                        <p id="profile-password">********</p>
+
+                        <p><strong>Your Location (state, city, or town)</strong></p>
+                        <p id="profile-location">Denver, CO</p>
+
+                        <p><strong>Trail Radius</strong></p>
+                        <p id="profile-radius">10 miles</p>
+
+                        <p><strong>Trail Difficulty Level</strong></p>
+                        <p id="profile-traildifficulty">Easy</p>
+                    <hr>
+                    <a id="edit-button" class="btn btn-primary btn-xl text-white">Edit</a>  
+                    <a href="home.html" class="btn btn-primary btn-xl text-white mr-2">Back to Home</a>              
+                </form>
+            </div>
+
+            <div class="d-none d-lg-block col-lg-6"></div>
+        </div>
+<!------------------------------------------------->
+        <div id="profile-form-page" class="row mt-5">
+            <div id="profile-form" class="col-md-12 col-lg-6">
+                <form class="rounded">
+                    <h1 class="text-uppercase text-bold">Edit Your Information...</h1>
+                    <hr class="my-4">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" class="form-control" id="name" aria-describedby="Name"
+                            placeholder="Your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Your Birthday</label>
+                        <input type="date" class="form-control" id="birthday" aria-describedby="Birthday">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email (username)</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="Email"
+                            placeholder="email@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Your password">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="location">Your Location (state, city, or town)</label>
+                        <input type="location" class="form-control" id="location" placeholder="Your location">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location-radius">Trail Radius</label>
+                        <select id="inputTrailRadius" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>0-5 miles</option>
+                            <option>5-10 miles</option>
+                            <option>10-15 miles</option>
+                            <option>15-20 miles</option>
+                            <option>20-25 miles</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trail-difficulty">Trail Difficulty Level</label>
+                        <select id="trail-difficulty" class="form-control">
+                            <option selected>Choose...</option>
+                            <option style="background-image: url('assets/images/easy-green.png'); width: 20px;"> Easy
+                                (green)
+                                <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy"> -->
+                            </option>
+                            <option>Intermediate (blue)
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
+                                    class="trail-difficulty" alt="easy">
+                            </option>
+                            <option>Advanced (black)
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
+                                    class="trail-difficulty" alt="easy">
+                            </option>
+                        </select>
+                    </div>
+                    <hr>
+                    <a id="profile-save" class="btn btn-primary btn-xl text-white mr-2">Save</a>
+                    <a href="home.html" class="btn btn-primary btn-xl text-white mr-2">Back to Home</a>
+                </form>
+            </div>
+
+            <div class="d-none d-lg-block col-lg-6"></div>
+        </div>
+
+    </div>
+
+    <script>
+        var profilePage = $("#profile-page");
+        var profileFormPage = $("#profile-form-page");
+        // var profileSave = $("#profile-save");
+
+        profilePage.fadeIn();
+        profileFormPage.hide();
+
+        $("#edit-button").on("click", function () {
+            profilePage.hide();
+            profileFormPage.fadeIn();
+        });
+
+        $("#profile-save").on("click", function(){
+            profilePage.fadeIn();
+            profileFormPage.hide();
+        });
+
+    </script>
+</body>
+
+</html>

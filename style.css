@@ -16,11 +16,33 @@ a:hover {
 }
 
 
-/* ----------------- Welcome Page CSS ----------------- */
-#welcome-page-padding {
-    /* background-color: rgba(255, 255, 255, 0.5); */
+/* ----------------- login Page CSS ----------------- */
+#login-page-padding {
     padding: 50px;
-    height: 1000px;
+}
+
+@media (max-width: 575.98px) {
+    #login-page-padding {
+        padding: 0px;
+    }
+}
+
+@media (min-width: 576px) {
+    #login-page-padding {
+        padding: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    #login-page-padding {
+        padding: 0px;
+    }
+}
+
+@media (min-width: 992px) {
+    #login-page-padding {
+        padding: 20px;
+    }
 }
 
 form {
@@ -28,7 +50,7 @@ form {
     padding: 40px;
 }
 
-#welcome {
+#login-form {
     margin-top: 200px;
 }
 
@@ -37,7 +59,7 @@ form {
 
 /* Featured Image CSS */
 #featured-image {
-    background-image: url("assets/images/kaitlin-muro-438763-unsplash.jpg");
+    background-image: url("https://media.giphy.com/media/tLxsi1ABsIfza/giphy.gif");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -53,7 +75,10 @@ form {
 
 #page-content {
     margin-top: 100px;
-    padding-bottom: 100px;
+}
+
+#main-content {
+    padding-bottom: 50px;
 }
 
 /* Card CSS */
@@ -88,4 +113,25 @@ form {
 /* Modal CSS */
 .modal h5 {
     margin-left: 50px;
+}
+
+/* Saved Trails */
+.smallicon-select {
+    color: black;
+    font-size: 20pt;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.smallicon-select:hover {
+    color: yellow;
+}
+
+/* ----------------- User Profile Page CSS ----------------- */
+#profile-page-background {
+    padding: 50px;
+    background-image: url("assets/images/michael-benz-258430-unsplash.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
