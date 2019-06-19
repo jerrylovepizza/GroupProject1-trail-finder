@@ -22,8 +22,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
-    <script src="logic.js"></script>
-
+    
 </head>
 
 <body>
@@ -50,42 +49,48 @@
         </div>
 
         <div id="form-page" class="row mt-5">
+        
+        <div id="form-page" class="row">
             <div id="signup-form" class="col-md-12 col-lg-6">
-                <form class="rounded">
+                <form class="rounded" id="form">
                     <h1 class="text-uppercase text-bold">Sign Up Here!</h1>
                     <hr class="my-4">
-
+                    
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="name" class="form-control" id="name" aria-describedby="Name"
-                            placeholder="Your name">
+                        placeholder="Your name">
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="birthday">Your Birthday</label>
                         <input type="date" class="form-control" id="birthday" aria-describedby="Birthday">
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="email">Your Email (username)</label>
                         <input type="email" class="form-control" id="email" aria-describedby="Email"
-                            placeholder="email@email.com">
+                        placeholder="email@email.com">
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Your password">
+                        <input type="password" class="form-control" id="signup-password" placeholder="Your password">
                     </div>
-
+                    
                     
                     <div class="form-group">
                         <label for="location">Your Location (state, city, or town)</label>
-                        <input type="location" class="form-control" id="location" placeholder="Your location">
+                        <input type="location" class="form-control" id="user-location" placeholder="Your location">
                     </div>
-
+                    <div class="form-group">
+                        <label for="location">Your Zip <Code></Code></label>
+                        <input type="location" class="form-control" id="user-zip-code" placeholder="Your Zip Code">
+                    </div>
+                    
                     <div class="form-group">
                         <label for="location-radius">Trail Radius</label>
-                        <select id="inputTrailRadius" class="form-control">
+                        <select id="user-radius" class="form-control">
                             <option selected>Choose...</option>
                             <option>0-5 miles</option>
                             <option>5-10 miles</option>
@@ -94,45 +99,52 @@
                             <option>20-25 miles</option>
                         </select>
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="trail-difficulty">Trail Difficulty Level</label>
-                        <select id="trail-difficulty" class="form-control">
+                        <select id="user-difficulty" class="form-control">
                             <option selected>Choose...</option>
-                            <option style="background-image: url('assets/images/easy-green.png'); width: 20px;"> Easy (green)
+                            <option style="background-image: url('assets/images/easy-green.png'); width: 20px;"> Easy (Green)
                                 <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy"> -->
                             </option>
-                            <option>Intermediate (blue)
+                            <option>Intermediate (Blue)
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy">
                             </option>
-                            <option>Advanced (black)
+                            <option>Advanced (Blue/Black)
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy">
+                            </option>
+                            <option>Expert (Black)
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png" class="trail-difficulty" alt="easy">
                             </option>
                         </select>
                     </div>
                     <hr>
                     <a href="home.html" id="submit" class="btn btn-primary btn-xl text-white">Submit</a>
+                    <a href="home.html" id="submit-button" class="btn btn-primary btn-xl text-white mt-3">Submit</a>
                 </form>
             </div>
-
+            
             <div class="d-none d-lg-block col-lg-6"></div>
         </div>
-
+        
     </div>
-
+    
     <script>
         var loginPage = $("#login-page");
         var formPage = $("#form-page");
 
         loginPage.fadeIn();
+        welcomePage.fadeIn();
         formPage.hide();
-
+        
         $("#sign-up").on("click", function () {
             loginPage.hide();
             formPage.fadeIn();
         });
-
+        
     </script>
+
+  <script src="logic.js"></script>
 </body>
 
 </html>
