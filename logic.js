@@ -144,8 +144,8 @@ method: "GET",
     
   })
   
-  $("#submit-button").on("click", function(event){
-    event.preventDefault();
+  $("#submit-button").on("click", function(){
+   
     
   // profile data entry :
   // name:
