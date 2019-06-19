@@ -10,6 +10,8 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  var database = firebase.database();
+
   var i = 0
   
   // default user location
@@ -41,6 +43,17 @@ var firebaseConfig = {
   var locationLat;
   var locationLon;
   var locationCode;
+
+  //user info:
+  var userName;
+  // birthday:
+  var userBirthday;
+  // email:
+  var userEmail;
+  // password:
+  var userPassword;
+  // Difficulty level:
+  var userDiffLevel;
 
   //  the trail array we are going to compare
   var trailList = [""];
@@ -120,10 +133,10 @@ method: "GET",
             }
           
           console.log(conditionColor)
-          if(conditionColor === "Green" && (locationCode===1000 || locationCode===1003)){
-            recommend = true;
+          // if(conditionColor === "Green" && (locationCode===1000 || locationCode===1003)){
+          //   recommend = true;
             
-          }
+          // }
         })
       })
       
@@ -131,29 +144,65 @@ method: "GET",
     
   })
   
-  $("#submit-Button").on("click", function(childSnapshot){
-
+  $("#submit-button").on("click", function(event){
+    event.preventDefault();
+    
   // profile data entry :
   // name:
-  var name = $("#name").val().trim();
+  userName = $("#name").val().trim();
   // birthday:
-  var birthday = parseInt($("#birthday").val().trim());
+  userBirthday =$("#birthday").val();
   // email:
-  var email = $("#email").val().trim();
+  userEmail = $("#email").val().trim();
   // password:
-  var password = $("#password").val().trim();
+  userPassword = $("#signup-password").val().trim();
   // Difficulty level:
-  var diffLevel = $("#difficulty").val().trim();
+  userDiffLevel = $("#user-difficulty").val();
   // location:
   userLocation = $("#user-location").val().trim();
-
   userZipcode = $("#user-zip-code").val().trim();
   
   // radius 
   userRadius = $("#user-radius").val();
 
+  console.log(userName);
+  console.log(userBirthday);
+  console.log(userEmail);
+  console.log(userPassword);
+  console.log(userDiffLevel);
+  console.log(userLocation);
+  console.log(userZipcode);
+
   //push to firebase
+  database.ref().push({
+userName: userName,
+userBirthday: userBirthday,
+userEmail: userEmail,
+userPassword: userPassword,
+userDiffLevel: userDiffLevel,
+userLocation: userLocation,
+userZipcode: userZipcode,
+dateAdded: firebase.database.ServerValue.TIMESTAMP
+  })
 });
+
+database.ref().on("child_added", function(event){
+var usernameDB = event.val().userName;
+var userEmailDB = event.val().userEmail
+var userBirthdayDB = event.val().userBirthday;
+var userPasswordDB = event.val().userPassword;
+var userDiffLevelDB = event.val().userDiffLevel;
+var userLocationDB = event.val().userLocation;
+var userZipcodeDB = event.val().userZipcode;
+console.log(userPasswordDB)
+console.log(usernameDB);
+  console.log(userBirthdayDB);
+  console.log(userEmailDB);
+  console.log(userPasswordDB);
+  console.log(userDiffLevelDB);
+  console.log(userLocationDB);
+  console.log(userZipcodeDB);
+})
 // profile data entry 
 $("#display-non-rec").on("click", function(){
   displayNonRec=true;
