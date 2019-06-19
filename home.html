@@ -101,6 +101,8 @@
 
                     <form class="form-inline mb-5 mt-0">
                         <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputLocation" placeholder="Your Location">
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputZipcode" placeholder="Your Zipcode">
+
                         <select id="inputTrailRadius" class="form-control mb-2 mr-sm-2">
                             <option selected>Trail Radius</option>
                             <option>0-5 miles</option>
@@ -110,27 +112,27 @@
                             <option>20-25 miles</option>
                         </select>
                         <select id="inputTrailDifficulty" class="form-control mb-2 mr-sm-2">
-                            <option selected>Trail Radius</option>
+                            <option selected>Trail Difficulty</option>
                             <option>Easy (green)</option>
                             <option>Intermediate (blue)</option>
                             <option>Advanced (black)</option>
                         </select>
 
-                        <a href="#" id="search" class="btn btn-primary btn-xl mb-2 mr-sm-2 text-white">Submit</a>
+                        <a id="search" class="btn btn-primary btn-xl mb-2 mr-sm-2 text-white">Submit</a>
                     </form>
                 </div>
 
                 <div class="col-md-2"></div>
             </div>
 
-            <div id="page-content" class="row bg-white">
+            <div id="page-content" class="row">
                 <!-- Left Sidebar -->
-                <div id="left-sidebar" class="col-md-12 col-lg-2 border-right bg-light"></div>
+                <div id="left-sidebar" class="col-md-12 col-lg-2 border-right"></div>
 
                 <!-- Main Content Section -->
-                <div id="main-content" class="col-md-12 col-lg-8  pt-5" style="height: 100%;">
+                <div id="main-content" class="col-md-12 col-lg-8 pt-5 bg-white" style="height: 100%;">
 
-                    <div class="row px-2">
+                    <div id="recommended-trails" class="row px-2">
 
                         <!-- Card 1 -->
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
@@ -143,12 +145,12 @@
                                         <p class="card-text">This route begins on DeLacy Creek Trail at a trailhead located
                                             on the Old Faithful to West Thumb road where it crosses DeLacy Creek. </p>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Trail Difficulty: <a href="#"
-                                                    class="btn bg-light"><img
-                                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
+                                            <li class="list-group-item">Trail Difficulty: 
+                                                <a href="#" class="btn bg-light">
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
                                                         class="trail-difficulty" alt="easy"> Easy</a></li>
-                                            <li class="list-group-item">Trail Radius: <a href="#" class="btn bg-light">10-15
-                                                    miles</a></li>
+                                            <li class="list-group-item">Trail Radius: 
+                                                <a href="#" class="btn bg-light">10-15 miles</a></li>
                                         </ul>
                                     </div>
                                     <div class="card-footer bg-success text-center">
@@ -157,6 +159,7 @@
                                     </div>
                                     <div class="card-select"><i class="icon-select fa fa-star"></i></div>
                                 </div>
+
                                 <!-- card modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -222,195 +225,13 @@
                                 </div>
                                 <!-- end card modal -->
                             </div>
-
-                        <!-- Card 2 -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                                <div class="card mt-3">
-                                    <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="..."
-                                        data-toggle="modal" data-target="#exampleModal">
-                                    <div class="card-body">
-                                        <h5 class="card-title" data-toggle="modal" data-target="#exampleModal">Shoshone Lake
-                                            & Geyser Basin</h5>
-                                        <p class="card-text">This route begins on DeLacy Creek Trail at a trailhead located
-                                            on the Old Faithful to West Thumb road where it crosses DeLacy Creek. </p>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Trail Difficulty: <a href="#"
-                                                    class="btn bg-light"><img
-                                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
-                                                        class="trail-difficulty" alt="easy"> Easy</a></li>
-                                            <li class="list-group-item">Trail Radius: <a href="#" class="btn bg-light">10-15
-                                                    miles</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer bg-success text-center">
-                                        <small class="text-white" data-toggle="modal" data-target="#exampleModal">Easy
-                                            Trail</small>
-                                    </div>
-                                    <div class="card-select"><i class="icon-select fa fa-star"></i></div>
-                                </div>
-                                <!-- card modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div class="card-select"><i class="icon-select fa fa-star"></i></div>
-                                                <h5 class="modal-title" id="exampleModalLabel">Shoshone Lake & Geyser Basin
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- modal featured image -->
-                                                <img src="assets/images/chris-abney-140714-unsplash.jpg"
-                                                    class="card-img-top" alt="...">
-    
-                                                <!-- modal details -->
-                                                <div class="row m-5">
-                                                    <div class="col-md"><strong>Condition: </strong>Great!</div>
-                                                    <div class="col-md"><strong>Difficulty: </strong>Easy</div>
-                                                    <div class="col-md"><strong>Rating: </strong>5 stars</div>
-                                                </div>
-    
-                                                <hr>
-                                                <!-- modal descriptions -->
-                                                <p>
-                                                    This route begins on DeLacy Creek Trail at a trailhead located on the Old
-                                                    Faithful to West Thumb road where it crosses DeLacy Creek. From the
-                                                    trailhead, the trail follows DeLacy Creek for three miles dropping 150 feet
-                                                    to its inlet to Shoshone Lake. After a mile, the trail breaks out of the
-                                                    forest and enters beautiful DeLacy Meadows.
-                                                </p>
-    
-                                                <p>
-                                                    For several miles, the trail skirts the eastern side of the meadows
-                                                    affording nice views. The meadow grows wider as it approaches the lake. At
-                                                    the 3-mile mark, the trail reaches the lake and a junction with the North
-                                                    Shore Shoshone Lake Trail which branches to the right. Shoshone Lake, at
-                                                    8,050 acres, is the second largest lake in the park and is the largest
-                                                    backcountry lake in the lower 48. It's got brook, lake, and brown trout too!
-                                                </p>
-                                                
-                                                <p>
-                                                    At this junction, take a right onto the North Shore Shoshone Lake Trail. The
-                                                    trail follows a beautiful beach across the north end of Shoshone Lake.
-                                                    You'll have little trouble negotiating the crossing of DeLacy Creek. These
-                                                    are some of the finest views visitors can get of the lake, which is best
-                                                    experienced by canoe. At the 5.5-mile mark, the trail swings away from the
-                                                    shore and enters the trees. From there, the trail travels 5.8 miles through
-                                                    fairly uninteresting lodgepole forests to a junction with the Shoshone Lake
-                                                    Trail.
-                                                </p>
-    
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card modal -->
-                            </div>
-
-                        <!-- Card 3 -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                            <div class="card mt-3">
-                                <img src="assets/images/chris-abney-140714-unsplash.jpg" class="card-img-top" alt="..."
-                                    data-toggle="modal" data-target="#exampleModal">
-                                <div class="card-body">
-                                    <h5 class="card-title" data-toggle="modal" data-target="#exampleModal">Shoshone Lake
-                                        & Geyser Basin</h5>
-                                    <p class="card-text">This route begins on DeLacy Creek Trail at a trailhead located
-                                        on the Old Faithful to West Thumb road where it crosses DeLacy Creek. </p>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Trail Difficulty: <a href="#"
-                                                class="btn bg-light"><img
-                                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png"
-                                                    class="trail-difficulty" alt="easy"> Easy</a></li>
-                                        <li class="list-group-item">Trail Radius: <a href="#" class="btn bg-light">10-15
-                                                miles</a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-footer bg-success text-center">
-                                    <small class="text-white" data-toggle="modal" data-target="#exampleModal">Easy
-                                        Trail</small>
-                                </div>
-                                <div class="card-select"><i class="icon-select fa fa-star"></i></div>
-                            </div>
-                            <!-- card modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="card-select"><i class="icon-select fa fa-star"></i></div>
-                                            <h5 class="modal-title" id="exampleModalLabel">Shoshone Lake & Geyser Basin
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- modal featured image -->
-                                            <img src="assets/images/chris-abney-140714-unsplash.jpg"
-                                                class="card-img-top" alt="...">
-
-                                            <!-- modal details -->
-                                            <div class="row m-5">
-                                                <div class="col-md"><strong>Condition: </strong>Great!</div>
-                                                <div class="col-md"><strong>Difficulty: </strong>Easy</div>
-                                                <div class="col-md"><strong>Rating: </strong>5 stars</div>
-                                            </div>
-
-                                            <hr>
-                                            <!-- modal descriptions -->
-                                            <p>
-                                                This route begins on DeLacy Creek Trail at a trailhead located on the Old
-                                                Faithful to West Thumb road where it crosses DeLacy Creek. From the
-                                                trailhead, the trail follows DeLacy Creek for three miles dropping 150 feet
-                                                to its inlet to Shoshone Lake. After a mile, the trail breaks out of the
-                                                forest and enters beautiful DeLacy Meadows.
-                                            </p>
-
-                                            <p>
-                                                For several miles, the trail skirts the eastern side of the meadows
-                                                affording nice views. The meadow grows wider as it approaches the lake. At
-                                                the 3-mile mark, the trail reaches the lake and a junction with the North
-                                                Shore Shoshone Lake Trail which branches to the right. Shoshone Lake, at
-                                                8,050 acres, is the second largest lake in the park and is the largest
-                                                backcountry lake in the lower 48. It's got brook, lake, and brown trout too!
-                                            </p>
-                                            
-                                            <p>
-                                                At this junction, take a right onto the North Shore Shoshone Lake Trail. The
-                                                trail follows a beautiful beach across the north end of Shoshone Lake.
-                                                You'll have little trouble negotiating the crossing of DeLacy Creek. These
-                                                are some of the finest views visitors can get of the lake, which is best
-                                                experienced by canoe. At the 5.5-mile mark, the trail swings away from the
-                                                shore and enters the trees. From there, the trail travels 5.8 miles through
-                                                fairly uninteresting lodgepole forests to a junction with the Shoshone Lake
-                                                Trail.
-                                            </p>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end card modal -->
-                        </div>
 
                     </div>
                 </div>
 
                 <!-- Right Sidebar -->
-                <div id="right-sidebar" class="col-md-12 col-lg-2 border-left bg-light p-2">
-                    <a href="#collapseExample" class="btn btn-secondary btn-xl btn-block py-3 mb-2 mr-sm-2 text-white"
+                <div id="right-sidebar" class="col-md-12 col-lg-2 border-left p-2">
+                    <a href="#collapseExample" class="btn btn-secondary btn-xl btn-block py-3 mb-2 mr-sm-2 text-white d-none"
                         data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
                         View Saved Trails
                     </a>
@@ -490,7 +311,8 @@
 
             </script>
 
-        </div>
+</div>
+<script src="logic.js"></script>
 </body>
 
 </html>
