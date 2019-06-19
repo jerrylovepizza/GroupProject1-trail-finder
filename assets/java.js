@@ -4,7 +4,7 @@ var queryurlGetTrails = "https://www.hikingproject.com/data/get-trails?lat=40.02
 var queryurlGetConditions = "https://www.hikingproject.com/data/get-conditions?ids=7001635,7002742,7000108,7002175,7000130&key=200490962-902084607f37c24a16f0e3f869dae93f"
 var ids = "7001635"
 
-
+i
 $.ajax({
 url: queryurlGetTrails,
 method: "GET",
