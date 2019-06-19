@@ -86,6 +86,11 @@ form {
     cursor: pointer;
 }
 
+#trailThumbnail{
+    height: 100px;
+    width: 100px;
+}
+
 .card-select {
     position: absolute;
     top: 0;
