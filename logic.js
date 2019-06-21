@@ -67,7 +67,7 @@ var firebaseConfig = {
 var queryurlGetTrails = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=" + userRadius +"&maxResults=20&sort=quality&sort=distance&key=200490962-902084607f37c24a16f0e3f869dae93f"
 
 var queryurlWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + userLocation + "&units=imperial&appid=45d5721b72861d10a7cbdd007c5f0120"
-var queryurlForcast = "http://api.apixu.com/v1/forecast.json?key=452ecb2ccebe475b919202954191706&q=" + userLocation + "&days=1"
+var queryurlForcast = "https://api.apixu.com/v1/forecast.json?key=452ecb2ccebe475b919202954191706&q=" + userLocation + "&days=1"
 var ids = "7001635"
 
 $.ajax({
