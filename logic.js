@@ -96,6 +96,7 @@ method: "GET",
     // console.log("name", trailList[i].name)
     // console.log("stars", trailList[i].stars)
     TrailLocation = trailList[i].location;
+    console.log(TrailLocation)
     // console.log("location", trailList[i].location)
     // console.log("difficulty", trailList[i].difficulty)
     // console.log("summery", trailList[i].summary)
@@ -103,86 +104,152 @@ method: "GET",
     // console.log("ID ", trailResponse.trails[i].id)
     idList.push(trailResponse.trails[i].id);
   }
-}).then(function(){
-//  console.log(idList)
- var queryurlGetConditions = "https://www.hikingproject.com/data/get-conditions?ids=" + idList[0] + "," + idList[1] + ","+ idList[2] + ","+ idList[3] +","+ idList[4] +","+ idList[5] +","+ idList[6] +","+ idList[7] +","+ idList[8] +","+ idList[9] +","+ idList[10] +","+ idList[11] +","+ idList[12] +","+ idList[13] +","+ idList[14] +","+ idList[15] +","+ idList[16] +","+ idList[17] +","+ idList[18] +","+ idList[19] +","+ idList[20] +"&key=200490962-902084607f37c24a16f0e3f869dae93f"
-  $.ajax({
-    url: queryurlGetConditions,
-    method: "GET"
-  })
-  .then(function(conditionResponse){
-    
-    
-    for(const prop in conditionResponse){
-      // console.log(conditionResponse[prop])
-      conditionColor = conditionResponse[prop].conditionColor;
-      conditionStatus = conditionResponse[prop].conditionStatus;
-      conditionDetails = conditionResponse[prop].conditionDetails;
-      // console.log(conditionColor)
-      if(conditionColor==="Green"){
-        
-      }
-      // console.log(conditionStatus)
-      // console.log(conditionDetails)
-      }
-  })
-  // .then(function(){
-  //   $.ajax({
-  //     url: queryurlWeather,
-  //     method: "GET"
-  //   })
-    // .then(function(weatherResponse){
-      
-    //   var WeatherDescription = weatherResponse.weather[0].description 
-    //   var WeatherClouds = weatherResponse.clouds.all
-    //   var WeatherTemp = weatherResponse.main.temp 
-    //   var WeatherTempMax = weatherResponse.main.temp_max
-    //   var WeatherTempMin = weatherResponse.main.temp_min
-      
-    // })
+})
+
     .then(function(){
       
-      
-      queryurlForcast = "http://api.apixu.com/v1/forecast.json?key=452ecb2ccebe475b919202954191706&q=" + TrailLocation + "&days=1"
-      $.ajax({
-        url: queryurlForcast,
-        method: "GET"
+        queryurlForcast = "http://api.apixu.com/v1/forecast.json?key=452ecb2ccebe475b919202954191706&q=" + TrailLocation + "&days=1"
+        $.ajax({
+          url: queryurlForcast,
+          method: "GET"
+        })
+        .then(function(forcastResponse){
+          // console.log(TrailLocation)
+          locationLat = forcastResponse.location.lat
+          locationLon = forcastResponse.location.lon
+          locationCode = forcastResponse.forecast.forecastday[0].day.condition.code
+          // console.log(forcastResponse)
+          // console.log(forcastResponse.forecast.forecastday[0].day.condition.code)
+          // console.log(locationCode)
+          
+        }) .then(function(){
+        
+            idList.push(trailList[i].id);
+            console.log(locationCode)
+            
+            
+            if((TrailConditionStatus === "All Clear")&&(locationCode===1003||locationCode===1000)){
+              $("#search").on("click", function() {
+              
+              for(i=0; i<trailList.length; i++){
+                console.log("name ", TrailName)
+              console.log("Pic ", TrailImg)
+              console.log("stars ", TrailStars)
+              console.log("location ", TrailLocation)
+              console.log("difficulty ", TrailDifficulty)
+              console.log("summary ", TrailSummary)
+              console.log("ascent ", TrailAscent)
+              console.log("condition status ", TrailConditionStatus)
+              // console.log("ID ", trailID)
+              console.log("weather Code ", locationCode)
+              generateButtons();
+              }
+            });
+
+          }
+        
+        
+        })
       })
-      .then(function(forcastResponse){
-        // console.log(TrailLocation)
-        locationLat = forcastResponse.location.lat
-        locationLon = forcastResponse.location.lon
-        locationCode = forcastResponse.forecast.forecastday[0].day.condition.code
-        // console.log(forcastResponse)
-        // console.log(forcastResponse.forecast.forecastday[0].day.condition.code)
-        // console.log(locationCode)
-        
-      }).then(function(){
-        
-        idList.push(trailList[i].id);
-        
-        
-        
-        if((TrailConditionStatus === "All Clear")&&(locationCode===1003||locationCode===1000)){
-          $("#search").on("click", function() {
-          
-          for(i=0; i<trailList.length; i++){
-            console.log("name ", TrailName)
-          console.log("Pic ", TrailImg)
-          console.log("stars ", TrailStars)
-          console.log("location ", TrailLocation)
-          console.log("difficulty ", TrailDifficulty)
-          console.log("summary ", TrailSummary)
-          console.log("ascent ", TrailAscent)
-          console.log("condition status ", TrailConditionStatus)
-          // console.log("ID ", trailID)
-          console.log("weather Code ", locationCode)
-           
-          
+      // console.log(idList)
+    
+    
+    $("#submit-button").on("click", function(){
+  // profile data entry :
+  // name:
+  userName = $("#name").val().trim();
+  // birthday:
+  userBirthday =$("#birthday").val();
+  // email:
+  userEmail = $("#email").val().trim();
+  // password:
+  userPassword = $("#signup-password").val().trim();
+  // Difficulty level:
+  userDiffLevel = $("#user-difficulty").val();
+  // location:
+  userLocation = $("#user-location").val().trim();
+  userZipcode = $("#user-zip-code").val().trim();
+  
+  // radius 
+  userRadius = $("#user-radius").val();
 
-  // ------- Populates trail cards
+  // console.log(userName);
+  // console.log(userBirthday);
+  // console.log(userEmail);
+  // console.log(userPassword);
+  // console.log(userDiffLevel);
+  // console.log(userLocation);
+  // console.log(userZipcode);
 
-  // new trail card
+  //push to firebase
+  database.ref().push({
+userName: userName,
+userBirthday: userBirthday,
+userEmail: userEmail,
+userPassword: userPassword,
+userDiffLevel: userDiffLevel,
+userLocation: userLocation,
+userZipcode: userZipcode,
+dateAdded: firebase.database.ServerValue.TIMESTAMP
+  })
+  $("#name").val("");
+  // birthday:
+  $("#birthday").val("");
+  // email:
+  $("#email").val("");
+  // password:
+ $("#signup-password").val("");
+  // Difficulty level:
+  ("#user-difficulty").val(userDiffLevel);
+  // location:
+  $("#user-location").val(userLocation);
+  $("#user-zip-code").val(userZipcode);
+  
+  // radius 
+  $("#user-radius").val(userRadius);
+});
+
+database.ref().on("child_added", function(event){
+var usernameDB = event.val().userName;
+var userEmailDB = event.val().userEmail
+var userBirthdayDB = event.val().userBirthday;
+var userPasswordDB = event.val().userPassword;
+var userDiffLevelDB = event.val().userDiffLevel;
+var userLocationDB = event.val().userLocation;
+var userZipcodeDB = event.val().userZipcode;
+// console.log(userPasswordDB)
+// console.log(usernameDB);
+//   console.log(userBirthdayDB);
+//   console.log(userEmailDB);
+//   console.log(userPasswordDB);
+//   console.log(userDiffLevelDB);
+//   console.log(userLocationDB);
+//   console.log(userZipcodeDB);
+});
+// profile data entry 
+$("#display-non-rec").on("click", function(){
+  displayNonRec=true;
+});
+
+if(displayNonRec===true){
+  //display non rec
+}else{
+  //display rec only 
+}
+
+//favorites 
+var favorites=[""];
+$("#add-favorites").on("click", function(_addFavorite){
+  if (favorites.indexOf(trailID)===-1){
+    favorites.push($(TrailID));
+  }else{
+    favorites.splice(indexOf(trailID,1))
+  }
+})
+
+
+function generateButtons(){
+  
   var newCard = $("<div>");
   newCard.addClass("col-sm-12 col-md-6 col-lg-6 col-xl-4");
   
@@ -365,301 +432,4 @@ method: "GET",
   // modal footer inside modal content
   modalContent.append(modalFooter);
       modalFooter.append(modalFooterButton);
-        }
-});
-
-          }
-        
-        
-        })
-      })
-      // console.log(idList)
-    })
-    
-  
-  
-   
-    $("#submit-button").on("click", function(){
-  // profile data entry :
-  // name:
-  userName = $("#name").val().trim();
-  // birthday:
-  userBirthday =$("#birthday").val();
-  // email:
-  userEmail = $("#email").val().trim();
-  // password:
-  userPassword = $("#signup-password").val().trim();
-  // Difficulty level:
-  userDiffLevel = $("#user-difficulty").val();
-  // location:
-  userLocation = $("#user-location").val().trim();
-  userZipcode = $("#user-zip-code").val().trim();
-  
-  // radius 
-  userRadius = $("#user-radius").val();
-
-  // console.log(userName);
-  // console.log(userBirthday);
-  // console.log(userEmail);
-  // console.log(userPassword);
-  // console.log(userDiffLevel);
-  // console.log(userLocation);
-  // console.log(userZipcode);
-
-  //push to firebase
-  database.ref().push({
-userName: userName,
-userBirthday: userBirthday,
-userEmail: userEmail,
-userPassword: userPassword,
-userDiffLevel: userDiffLevel,
-userLocation: userLocation,
-userZipcode: userZipcode,
-dateAdded: firebase.database.ServerValue.TIMESTAMP
-  })
-  $("#name").val("");
-  // birthday:
-  $("#birthday").val("");
-  // email:
-  $("#email").val("");
-  // password:
- $("#signup-password").val("");
-  // Difficulty level:
-  ("#user-difficulty").val(userDiffLevel);
-  // location:
-  $("#user-location").val(userLocation);
-  $("#user-zip-code").val(userZipcode);
-  
-  // radius 
-  $("#user-radius").val(userRadius);
-});
-
-database.ref().on("child_added", function(event){
-var usernameDB = event.val().userName;
-var userEmailDB = event.val().userEmail
-var userBirthdayDB = event.val().userBirthday;
-var userPasswordDB = event.val().userPassword;
-var userDiffLevelDB = event.val().userDiffLevel;
-var userLocationDB = event.val().userLocation;
-var userZipcodeDB = event.val().userZipcode;
-// console.log(userPasswordDB)
-// console.log(usernameDB);
-//   console.log(userBirthdayDB);
-//   console.log(userEmailDB);
-//   console.log(userPasswordDB);
-//   console.log(userDiffLevelDB);
-//   console.log(userLocationDB);
-//   console.log(userZipcodeDB);
-});
-// profile data entry 
-$("#display-non-rec").on("click", function(){
-  displayNonRec=true;
-});
-
-if(displayNonRec===true){
-  //display non rec
-}else{
-  //display rec only 
 }
-
-//favorites 
-var favorites=[""];
-$("#add-favorites").on("click", function(_addFavorite){
-  if (favorites.indexOf(trailID)===-1){
-    favorites.push($(TrailID));
-  }else{
-    favorites.splice(indexOf(trailID,1))
-  }
-})
-
-// //trail searchbar
-// $("#search").on("click", function() {
-
-//   // ------- Populates trail cards
-
-//   // new trail card
-//   var newCard = $("<div>");
-//   newCard.addClass("col-sm-12 col-md-6 col-lg-6 col-xl-4");
-  
-//   // card container
-//   var cardContainer = $("<div>");
-//   cardContainer.addClass("card mt-3");
-//   cardContainer.text("Card info");
-
-//   // card image
-//   var cardImage = $("<img>");
-//   cardImage.attr("src", "assets/images/chris-abney-140714-unsplash.jpg");
-//   cardImage.addClass("card-img-top");
-//   cardImage.attr("data-toggle", "modal");
-//   cardImage.attr("data-target", ".exampleModal");
-
-//   // card body
-//   var cardBody = $("<div>");
-//   cardBody.addClass("card-body");
-
-//   // card title
-//   var cardTitle = $("<h5>");
-//   cardTitle.addClass("card-title");
-//   cardTitle.attr("data-toggle", "modal");
-//   cardTitle.attr("data-target", ".exampleModal");
-//   cardTitle.text("Trail Name Title");
-
-//   // card text
-//   var cardText = $("<p>");
-//   cardText.addClass("card-text");
-//   cardText.text("This route begins on DeLacy Creek Trail at a trailhead located on the Old Faithful to West Thumb road where it crosses DeLacy Creek.");
-
-//   // card info
-//   var cardInfo = $("<ul>");
-//   cardInfo.addClass("list-group list-group-flush");
-
-//   var cardInfoItem1 = $("<li>");
-//   cardInfoItem1.addClass("list-group-item");
-//   cardInfoItem1.text("Trail Difficulty: ");
-
-//   var cardInfo1Difficulty = $("<a>");
-//   cardInfo1Difficulty.attr("href", "#");
-//   cardInfo1Difficulty.addClass("btn bg-light");
-
-//   var cardInfo1DifficultyImage = $("<img>");
-//   cardInfo1DifficultyImage.addClass("trail-difficulty");
-//   cardInfo1DifficultyImage.attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/128px-Ski_trail_rating_symbol-green_circle.svg.png");
-
-//   var cardInfoItem2 = $("<li>");
-//   cardInfoItem2.addClass("list-group-item");
-//   cardInfoItem2.text("Trail Radius: ");
-
-//   var cardInfo2Radius = $("<a>");
-//   cardInfo2Radius.attr("href", "#");
-//   cardInfo2Radius.addClass("btn bg-light");
-
-//   // card footer
-//   var cardFooter = $("<div>");
-//   cardFooter.addClass("card-footer bg-success text-center");
-
-//   var cardFooterText = $("<small>");
-//   cardFooterText.addClass("text-white");
-//   cardFooterText.attr("data-toggle", "modal");
-//   cardFooterText.attr("data-target", ".exampleModal");
-//   cardFooterText.text("Easy Trail")
-  
-//   cardFooter.html(cardFooterText);
-  
-//   // put cardContainer inside newCard
-//   newCard.html(cardContainer);
-  
-//   // put cardImage and cardBody inside cardContainer
-//   cardContainer.html(cardImage);
-//   cardContainer.append(cardBody);
-//   cardContainer.append(cardFooter);
-
-//   // combine all cardInfo elements to cardInfo
-//   cardInfo.html(cardInfoItem1);
-//   cardInfoItem1.append(cardInfo1Difficulty);
-//   cardInfo1Difficulty.html(cardInfo1DifficultyImage);
-//   cardInfo1Difficulty.append(" Easy");
-
-//   cardInfo.append(cardInfoItem2);
-//   cardInfoItem2.append(cardInfo2Radius);
-//   cardInfo2Radius.append(" 10-15 miles");
-
-//   // put cardTitle, cardText, cardInfo inside cardBody
-//   cardBody.html(cardTitle);
-//   cardBody.append(cardText);
-//   cardBody.append(cardInfo);
-
-//   $("#recommended-trails").append(newCard);
-
-//   // ------- Populates trail card modals
-
-//   // modal container
-//   var modalContainer = $("<div>");
-//   modalContainer.addClass("modal fade exampleModal");
-//   modalContainer.attr("tabindex", "-1");
-//   modalContainer.attr("role", "dialog");
-//   modalContainer.attr("area-hidden", "true");
-
-//   // modal dialog
-//   var modalDialog = $("<div>");
-//   modalDialog.addClass("modal-dialog modal-lg");
-//   modalDialog.attr("role", "document");
-
-//   // modal content
-//   var modalContent = $("<div>");
-//   modalContent.addClass("modal-content")
-
-//   // modal header
-//   var modalHeader = $("<div>");
-//   modalHeader.addClass("modal-header");
-  
-//   var modalTitle = $("<h5>");
-//   modalHeader.html(modalTitle);
-//   modalTitle.text("Shoshone Lake & Geyser Basin");
-
-//   var modalCloseButton = $("<button>");
-//   modalCloseButton.addClass("close");
-//   modalCloseButton.attr("data-dismiss", "modal");
-//   modalCloseButton.attr("aria-label", "Close");
-//   modalHeader.html(modalCloseButton);
-
-//   var modalCloseButtonIcon = $("<span>");
-//   modalCloseButtonIcon.attr("aria-hidden", "true");
-//   modalCloseButtonIcon.html("&times");
-//   modalCloseButton.html(modalCloseButtonIcon);
-
-//   // modal body
-//   var modalBody = $("<div>");
-//   modalBody.addClass("modal-body");
-
-//   var featuredImg = $("<img>");
-//   featuredImg.attr("src", "assets/images/chris-abney-140714-unsplash.jpg");
-//   featuredImg.addClass("card-img-top");
-
-//   var modalDetails = $("<div>");
-//   modalDetails.addClass("row m-5");
-//   modalDetails.append("<div class='col-md'>" + "<strong>" + "Condition: " + "</strong>" + "Great!" + "</div>")
-//   modalDetails.append("<div class='col-md'>" + "<strong>" + "Difficulty: " + "</strong>" + "Easy" + "</div>")
-//   modalDetails.append("<div class='col-md'>" + "<strong>" + "Rating: " + "</strong>" + "5 Stars" + "</div>")
-
-
-//   var trailSummary = $("<p>");
-//   trailSummary.text("This route begins on DeLacy Creek Trail at a trailhead located on the Old Faithful to West Thumb road where it crosses DeLacy Creek. From the trailhead, the trail follows DeLacy Creek for three miles dropping 150 feet to its inlet to Shoshone Lake. After a mile, the trail breaks out of the forest and enters beautiful DeLacy Meadows.");
-
-//   // modal footer
-//   var modalFooter = $("<div>");
-//   modalFooter.addClass("modal-footer");
-
-//   var modalFooterButton = $("<button>");
-//   modalFooterButton.addClass("btn btn-secondary");
-//   modalFooterButton.attr("type", "button");
-//   modalFooterButton.attr("data-dismiss", "modal");
-//   modalFooterButton.text("Close");
-
-
-//   // append modalBody to the new trail card
-//   newCard.append(modalContainer);
-
-//   // put modal dialog inside modal body
-//   modalContainer.append(modalDialog);
- 
-//   // put modal content inside modal dialog
-//   modalDialog.append(modalContent);
-
-//   // put modal header inside modal content
-//   modalContent.append(modalHeader);
-//       modalHeader.append(modalTitle);
-//       modalHeader.append(modalCloseButton);
-
-//   // modal body inside modal content
-//   modalContent.append(modalBody);
-//       modalBody.append(featuredImg);
-//       modalBody.append(modalDetails);
-//       modalBody.append("<hr>");
-//       modalBody.append(trailSummary);
-
-//   // modal footer inside modal content
-//   modalContent.append(modalFooter);
-//       modalFooter.append(modalFooterButton);
-
-// });
-

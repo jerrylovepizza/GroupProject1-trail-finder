@@ -58,3 +58,44 @@ $.ajax({
 
 
 
+// .then(function(){
+  //   $.ajax({
+  //     url: queryurlWeather,
+  //     method: "GET"
+  //   })
+    // .then(function(weatherResponse){
+      
+    //   var WeatherDescription = weatherResponse.weather[0].description 
+    //   var WeatherClouds = weatherResponse.clouds.all
+    //   var WeatherTemp = weatherResponse.main.temp 
+    //   var WeatherTempMax = weatherResponse.main.temp_max
+    //   var WeatherTempMin = weatherResponse.main.temp_min
+      
+    // })
+
+
+    .then(function(conditionResponse){
+    
+    
+        for(const prop in conditionResponse){
+          // console.log(conditionResponse[prop])
+          conditionColor = conditionResponse[prop].conditionColor;
+          conditionStatus = conditionResponse[prop].conditionStatus;
+          conditionDetails = conditionResponse[prop].conditionDetails;
+          // console.log(conditionColor)
+          if(conditionColor==="Green"){
+            
+          }
+          // console.log(conditionStatus)
+          // console.log(conditionDetails)
+          }
+      })
+
+      .then(function(){
+        //  console.log(idList)
+         var queryurlGetConditions = "https://www.hikingproject.com/data/get-conditions?ids=" + idList[0] + "," + idList[1] + ","+ idList[2] + ","+ idList[3] +","+ idList[4] +","+ idList[5] +","+ idList[6] +","+ idList[7] +","+ idList[8] +","+ idList[9] +","+ idList[10] +","+ idList[11] +","+ idList[12] +","+ idList[13] +","+ idList[14] +","+ idList[15] +","+ idList[16] +","+ idList[17] +","+ idList[18] +","+ idList[19] +","+ idList[20] +"&key=200490962-902084607f37c24a16f0e3f869dae93f"
+          $.ajax({
+            url: queryurlGetConditions,
+            method: "GET"
+          })
+        })
