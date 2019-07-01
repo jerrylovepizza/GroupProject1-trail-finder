@@ -9,16 +9,6 @@ Difficulty level:
 location:
 Dogs:
 
-$("#submit-button").on("click", function(childSnapshot){
-      event.preventDefault();
-      var userName = $("#name").val().trim();
-      var email = $("#email").val().trim();
-      var birthday = parseInt($("#birthday").val().trim());
-      var difficulty = $("#diffLevel").val().trim();
-      var dogs = t/f
-
-      
-}
 
 rank of locations
 favorites
