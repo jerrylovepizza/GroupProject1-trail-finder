@@ -1,16 +1,16 @@
-# whatever-porject1
+## Group-Project1
 
-profile data entry :
+* profile data entry :
 name:
 birthday:
 email:
 password:
-Difficulty level:
+* Difficulty level:
 location:
 Dogs:
 
 
-rank of locations
+* rank of locations
 favorites
 generate a list of locations based on userlocation 
 within user radius 
@@ -22,7 +22,7 @@ if green recommend
 if yellow caution
 if red false
 
-weather
+* weather
 if sunny and clear recommend 
 else don't 
 
